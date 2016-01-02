@@ -9,18 +9,18 @@ function Keywords ()
     
   this.toggle = function (input) 
   {
-    var index = words.indexOf(input)
+    var index = words.indexOf(input);
     if (index > -1) 
     {
       // if already highlighted, remove
       words.splice(index, 1);
-      document.getElementById(input + "-button").className = "";
+      document.getElementById(input.replace(/\\/g, "") + "-button").className = "";
     } 
     else 
     {
       // otherwise add
       words.push(input);
-      document.getElementById(input + "-button").className = "button-primary";
+      document.getElementById(input.replace(/\\/g, "") + "-button").className = "button-primary";
     }
     myHilitor.applyArray(words);
   };
