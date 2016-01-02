@@ -41,7 +41,7 @@ function Hilitor(id, tag)
     //if(!this.openLeft) re = "\\b" + re;
     //if(!this.openRight) re = re + "\\b";
     if(!this.openLeft) re = "\\b" + re;
-    if(!this.openRight) re = re + "[\\s\\,\\.\\!\\?\\-]";
+    if(!this.openRight) re = re + "(?=[\\s\\,\\.\\!\\?\\-])";
     matchRegex = new RegExp(re, "i");
   };
 
