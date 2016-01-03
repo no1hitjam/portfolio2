@@ -7,7 +7,7 @@ function Hilitor(id, tag)
   var targetNode = document.getElementById(id) || document.body;
   var hiliteTag = tag || "EM";
   var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM|SPAN)$");
-  var colors = ["#79d2ec"];
+  var colors = ["#80dcff"];
   var wordColor = [];
   var colorIdx = 0;
   var matchRegex = "";
@@ -36,12 +36,14 @@ function Hilitor(id, tag)
 
   this.setRegex = function(input)
   {
-    input = input.replace(/^[^\w]+|[^\w#+]+$/g, "") //.replace(/[^\w'-]+/g, "|");
+    input = input.replace(/^[^\w\.]+|[^\w\#\+\.]+$/g, "") //.replace(/[^\w'-]+/g, "|");
     var re = "(" + input + ")";
     //if(!this.openLeft) re = "\\b" + re;
     //if(!this.openRight) re = re + "\\b";
-    if(!this.openLeft) re = "\\b" + re;
-    if(!this.openRight) re = re + "(?=[\\s\\,\\.\\!\\?\\-])";
+    //if(!this.openLeft) re = "(?<=[\\s\\,\\!\\?\\-\\#\\+])" + re;
+    //if(!this.openRight) re = re + "(?=[\\s\\,\\.\\!\\?\\-])";
+    if(!this.openLeft) re = "[\\b\\s]" + re;
+    if(!this.openRight) re = re + "[\\s\\,\\.\\!\\?\\-]";
     matchRegex = new RegExp(re, "i");
   };
 
