@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Play "Rhythmica" Online!</title>
+  <meta name="description" content="Portfolio website">
+  <meta name="author" content="Jackson Lango">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
+  <link rel="stylesheet" href="../../css/lango.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
+
+  <!-- Unity
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type='text/javascript' src='https://ssl-webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/jquery.min.js'></script>
+  <script type="text/javascript">
+  <!--
+  var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+  if (document.location.protocol == 'https:')
+    unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+  document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+  -->
+  </script>
+  <script type="text/javascript">
+  <!--
+    var config = {
+      width: 480, 
+      height: 640,
+      params: { enableDebugging:"0" }
+      
+    };
+    var u = new UnityObject2(config);
+
+    jQuery(function() {
+
+      var $missingScreen = jQuery("#unityPlayer").find(".missing");
+      var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+      $missingScreen.hide();
+      $brokenScreen.hide();
+      
+      u.observeProgress(function (progress) {
+        switch(progress.pluginStatus) {
+          case "broken":
+            $brokenScreen.find("a").click(function (e) {
+              e.stopPropagation();
+              e.preventDefault();
+              u.installPlugin();
+              return false;
+            });
+            $brokenScreen.show();
+          break;
+          case "missing":
+            $missingScreen.find("a").click(function (e) {
+              e.stopPropagation();
+              e.preventDefault();
+              u.installPlugin();
+              return false;
+            });
+            $missingScreen.show();
+          break;
+          case "installed":
+            $missingScreen.remove();
+          break;
+          case "first":
+          break;
+        }
+      });
+      u.initPlugin(jQuery("#unityPlayer")[0], "rhythmica.unity3d");
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" id="content">
+    <h1>Rhythmica</h1>
+    <p>
+      Back to Jackson's <a href="../..">Programming</a> / 
+      <a href="../../art">Art</a> / 
+      <a href="..">Games</a> / 
+      <a href="https://github.com/no1hitjam">GitHub</a> / 
+      <a href="https://www.instagram.com/octognal">Instagram</a>
+    </p>
+
+    <div class="row">
+      <div class="one-half column">
+        <p class="info info-em">
+            ( Get the latest version of Unity Web Player to play. This game is controlled with a mouse. )
+        </p>
+      </div><div class="one-half column"></div>
+    </div>
+
+    <div id="unityPlayer" style="height: 640px; width: 480px;">
+      <div class="missing">
+        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+          <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+        </a>
+      </div>
+      <div class="broken">
+        <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+          <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
