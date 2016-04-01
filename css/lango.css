@@ -33,6 +33,8 @@ a.header:hover {
   font-style: italic;
   background-color: #e2e2e2;
 }
+
+.home-link { font-size: 1.8rem; }
   
 .button,
 button,
